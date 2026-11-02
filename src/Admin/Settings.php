@@ -253,6 +253,28 @@ final class Settings implements HasHooks
                                     <?php endif; ?>
                                 </td>
                             </tr>
+                            <tr>
+                                <th scope="row">
+                                    <?php esc_html_e('Customs (EU Import Duty)', 'quotlet'); ?>
+                                </th>
+                                <td>
+                                    <?php if (defined('\\Customs\\VERSION') || class_exists('\\Customs\\Plugin')) : ?>
+                                        <p class="description" style="color:#007017;font-weight:600;">
+                                            <?php esc_html_e('Customs is active. Seamlessly calculate EU cross-border tariffs and duties for international sales and commercial quotes.', 'quotlet'); ?>
+                                        </p>
+                                    <?php else : ?>
+                                        <p class="description">
+                                            <?php
+                                            printf(
+                                                /* translators: %s: partner plugin name, linked to its search on the Add Plugins screen. */
+                                                esc_html__('Install %s to calculate EU cross-border import duties and tariffs for international orders and wholesale quotes.', 'quotlet'),
+                                                '<a href="' . esc_url(admin_url('plugin-install.php?s=' . rawurlencode('Customs - EU Import Duty for WooCommerce') . '&tab=search&type=term')) . '">' . esc_html('Customs - EU Import Duty for WooCommerce') . '</a>'
+                                            );
+                                            ?>
+                                        </p>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
