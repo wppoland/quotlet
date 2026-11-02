@@ -275,6 +275,28 @@ final class Settings implements HasHooks
                                     <?php endif; ?>
                                 </td>
                             </tr>
+                            <tr>
+                                <th scope="row">
+                                    <?php esc_html_e('Demando (Product Enquiry)', 'quotlet'); ?>
+                                </th>
+                                <td>
+                                    <?php if (class_exists('\\Enquire\\Plugin')) : ?>
+                                        <p class="description" style="color:#007017;font-weight:600;">
+                                            <?php esc_html_e('Demando is active. Shoppers can ask quick questions directly on single product pages alongside formal quote requests.', 'quotlet'); ?>
+                                        </p>
+                                    <?php else : ?>
+                                        <p class="description">
+                                            <?php
+                                            printf(
+                                                /* translators: %s: partner plugin name, linked to its search on the Add Plugins screen. */
+                                                esc_html__('Install %s to let customers ask questions on single product pages before requesting a formal quote.', 'quotlet'),
+                                                '<a href="' . esc_url(admin_url('plugin-install.php?s=' . rawurlencode('Demando - Product Enquiry for WooCommerce') . '&tab=search&type=term')) . '">' . esc_html('Demando - Product Enquiry for WooCommerce') . '</a>'
+                                            );
+                                            ?>
+                                        </p>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
