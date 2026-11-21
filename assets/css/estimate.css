@@ -37,19 +37,41 @@
     color: var(--estimate-ink);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark values follow the page's color-scheme (set by the theme), not the OS.
+   Custom properties accept any value, so the light-dark() tokens sit behind
+   @supports: older browsers keep the plain light tokens above. */
+@supports (color: light-dark(white, black)) {
     .estimate-quote {
-        --estimate-accent: #e0a94a;
-        --estimate-accent-soft: rgba(224, 169, 74, 0.16);
-        --estimate-ink: var(--wp--preset--color--contrast, #ece7df);
-        --estimate-rule: rgba(224, 169, 74, 0.6);
-        --estimate-paper: rgba(224, 169, 74, 0.06);
-        --estimate-border: rgba(255, 255, 255, 0.18);
-        --estimate-muted: rgba(255, 255, 255, 0.65);
-        --estimate-success-bg: rgba(6, 95, 70, 0.25);
-        --estimate-success-fg: #6ee7b7;
-        --estimate-error-bg: rgba(153, 27, 27, 0.25);
-        --estimate-error-fg: #fca5a5;
+        --estimate-accent: light-dark(#8a5a12, #e0a94a);
+        --estimate-accent-soft: light-dark(rgba(138, 90, 18, 0.14), rgba(224, 169, 74, 0.16));
+        --estimate-ink: var(--wp--preset--color--contrast, light-dark(#2b2722, #ece7df));
+        --estimate-rule: light-dark(rgba(138, 90, 18, 0.7), rgba(224, 169, 74, 0.6));
+        --estimate-paper: light-dark(rgba(138, 90, 18, 0.05), rgba(224, 169, 74, 0.06));
+        --estimate-border: light-dark(rgba(0, 0, 0, 0.12), rgba(255, 255, 255, 0.18));
+        --estimate-muted: light-dark(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.65));
+        --estimate-success-bg: light-dark(#ecfdf5, rgba(6, 95, 70, 0.25));
+        --estimate-success-fg: light-dark(#065f46, #6ee7b7);
+        --estimate-error-bg: light-dark(#fef2f2, rgba(153, 27, 27, 0.25));
+        --estimate-error-fg: light-dark(#991b1b, #fca5a5);
+    }
+}
+
+/* Fallback for browsers without light-dark(): the previous OS-based dark mode. */
+@supports not (color: light-dark(white, black)) {
+    @media (prefers-color-scheme: dark) {
+        .estimate-quote {
+            --estimate-accent: #e0a94a;
+            --estimate-accent-soft: rgba(224, 169, 74, 0.16);
+            --estimate-ink: var(--wp--preset--color--contrast, #ece7df);
+            --estimate-rule: rgba(224, 169, 74, 0.6);
+            --estimate-paper: rgba(224, 169, 74, 0.06);
+            --estimate-border: rgba(255, 255, 255, 0.18);
+            --estimate-muted: rgba(255, 255, 255, 0.65);
+            --estimate-success-bg: rgba(6, 95, 70, 0.25);
+            --estimate-success-fg: #6ee7b7;
+            --estimate-error-bg: rgba(153, 27, 27, 0.25);
+            --estimate-error-fg: #fca5a5;
+        }
     }
 }
 
