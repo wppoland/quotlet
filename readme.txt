@@ -2,7 +2,7 @@
 Contributors: motylanogha
 Tags: woocommerce, request a quote, quote, b2b, hide price
 Requires at least: 6.5
-Tested up to: 7.1
+Tested up to: 7.2
 Requires PHP: 8.1
 Requires Plugins: woocommerce
 Stable tag: 1.3.12
